@@ -1,0 +1,18 @@
+{
+  "name": "nanofetch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {},
+  "keywords": [
+    "fetch",
+    "request",
+    "HTTP"
+  ],
+  "author": "Stephen Lee",
+  "license": "MIT"
+}
