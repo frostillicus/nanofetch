@@ -1,7 +1,7 @@
 {
   "name": "nanofetch",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "A super-lightweight tool for making basic GET and POST requests. It uses the Fetch API but is meant to be simpler and more intuitive, similar to tools like Axios. For example, HTTP errors will be returned in the catch statement.",
   "main": "index.js",
   "type": "module",
   "directories": {

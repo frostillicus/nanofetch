@@ -1,37 +1,58 @@
-<a name="NanoFetch"></a>
+# nanofetch
 
-## NanoFetch
-NanoFetch class
+A super-lightweight tool for making basic GET and POST requests. It uses the Fetch API but is meant to be simpler and more intuitive, similar to tools like Axios. For example, HTTP errors will be returned in the catch statement.
 
-**Kind**: global class  
+## GET request
+```js
+nanofetch
+  .get('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => console.log('response:', response))
+  .catch(error => console.log('error:', error))
 
-* [NanoFetch](#NanoFetch)
-    * [.get(url)](#NanoFetch+get) ⇒ <code>Promise.&lt;object&gt;</code>
-    * [.post(url, [body])](#NanoFetch+post) ⇒ <code>Promise.&lt;object&gt;</code>
+/*
+response: {
+  status: 200,
+  statusText: 'OK',
+  ok: true,
+  body: { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+}
+*/
+```
 
-<a name="NanoFetch+get"></a>
+## GET request (with HTTP error)
+```js
+nanofetch
+  .get('https://jsonplaceholder.typicode.com/willreturnhttperror')
+  .then(response => console.log('response:', response))
+  .catch(error => console.log('error:', error))
 
-### nanoFetch.get(url) ⇒ <code>Promise.&lt;object&gt;</code>
-GET request.
+/*
+error: { 
+  status: 404, 
+  statusText: 'Not Found', 
+  ok: false, 
+  body: {} 
+}
+*/
+```
 
-**Kind**: instance method of [<code>NanoFetch</code>](#NanoFetch)  
-**Returns**: <code>Promise.&lt;object&gt;</code> - The response to the GET request.  
+## POST request
+```js
+nanofetch
+  .post('https://jsonplaceholder.typicode.com/posts', {
+    title: 'This is the title',
+    body: 'Body text',
+    userId: 1
+  })
+  .then((response) => console.log('response:', response))
+  .catch((error) => console.log('error:', error));
 
-| Param | Type | Description |
-| --- | --- | --- |
-| url | <code>string</code> | The request URL. |
-
-<a name="NanoFetch+post"></a>
-
-### nanoFetch.post(url, [body]) ⇒ <code>Promise.&lt;object&gt;</code>
-POST request.
-
-**Kind**: instance method of [<code>NanoFetch</code>](#NanoFetch)  
-**Returns**: <code>Promise.&lt;object&gt;</code> - The response to the POST request.
-@  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| url | <code>string</code> | The request URL. |
-| [body] | <code>object</code> | The request body. |
-
+/*
+response: {
+  status: 201,
+  statusText: 'Created',
+  ok: true,
+  body: { title: 'This is the title', body: 'Body text', userId: 1, id: 101 }
+}
+*/
+```
